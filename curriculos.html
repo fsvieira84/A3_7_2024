@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Menu A3</title>
+<style>
+    p.a {
+        border-style: dotted;
+    }
+    p.b {
+        border-style: outset;
+    }
+    p.c {
+        border-style: inset;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    header, nav, section {
+        width: 100%;
+        max-width: 1200px; /* Define a largura máxima */
+        margin: 0 auto; /* Centraliza o conteúdo */
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+        width: 100%; /* Define a largura como 100% do contêiner */
+    }
+    .grid-item {
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+    .grid-item p {
+        margin: 0;
+    }
+    nav a {
+        margin: 0 10px;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>A3 - Avaliação</h1>
+    </header>
+    <nav>        
+        <a href="menu.html">Home</a>
+        <a href="curriculos.html">Currículos</a>
+        <a href="cadastroCurriculos.html">Cadastro de Currículos</a>
+        <a href="dicasCarreira.html">Dicas de Carreira</a>
+        <a href="vagasEmprego.html">Vagas de Emprego</a>
+    </nav>
+    <section>
+        <div class="grid-container">
+            <div class="grid-item">
+                <b>Éric Albuquerque</b><br> 
+                RA: 125111345570<br>
+                E-mail eric.contato@live.com<br>
+                <br>
+                <b>Kotlin Developer</b><br>
+                Experiencia em engenharia de software com foco no desenvolvimento Mobile;<br>
+                Experiencia em arquitetura de aplicativos Android e Multiplataforma em Kotlin<;br>
+                Experience na construcao e deploy com integração continua de infraestrutura;<br>
+                <br>
+                <b>Tecnologias conhecidas</b><br>
+                Mobile Application<br>
+                Kotlin<br>
+                Kotlin Multiplataform<br>
+                Swift<br>
+                SQLite<br>
+                Oracle<br>
+                MS SQL<br>
+                AWS<br>
+                Azure<br>
+                DynamoDB<br>
+                GitHub<br>
+                DataDog<br>
+            </div>
+            <div class="grid-item">
+                <b>Filipe Scarpellini</b><br> 
+                RA: 12524152549<br>
+                E-mail: fsvieira84@gmail.com<br>
+                <br>
+                <b>SRE Leader</b><br>
+                Experiencia na cultura e práticas de SRE;<br>
+                Conhecimento abrangente de infraestrutura on-prem e cloud;<br>
+                <br>
+                <b>Tecnologias conhecidas</b><br>
+                AWS<br>
+                Azure<br>
+                CosmosDB<br>
+                Oracle<br>
+                MS SQL<br>
+                GitHub<br>
+                Python<br>
+                Dynatrace<br>
+                </div>
+    </section>
+</body>
+</html>

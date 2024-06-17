@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Cadastro de Currículos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: auto;
+        }
+        label, input, textarea {
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            width: 100px;
+            padding: 10px;
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function calcularIdade() {
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const dataAtual = new Date();
+            const dataNasc = new Date(dataNascimento);
+            let idade = dataAtual.getFullYear() - dataNasc.getFullYear();
+            const mes = dataAtual.getMonth() - dataNasc.getMonth();
+            if (mes < 0 || (mes === 0 && dataAtual.getDate() < dataNasc.getDate())) {
+                idade--;
+            }
+            document.getElementById('idade').value = idade;
+        }
+
+        function validarCPF(cpf) {
+            cpf = cpf.replace(/[^\d]+/g, '');
+            if (cpf.length !== 11) return false;
+
+            let soma = 0;
+            let resto;
+
+            for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) resto = 0;
+            if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+            soma = 0;
+            for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) resto = 0;
+            if (resto !== parseInt(cpf.substring(10, 11))) return false;
+
+            return true;
+        }
+
+        function validarFormulario() {
+            const cpf = document.getElementById('cpf').value;
+            const digitoVerificador = document.getElementById('digitoVerificador').value;
+            if (!validarCPF(cpf + digitoVerificador)) {
+                alert('CPF inválido.');
+                return false;
+            }
+            return true;
+        }
+
+        function onSubmit(event) {
+            event.preventDefault();
+            if (!validarFormulario()) {
+                return;
+            }
+
+            const nome = document.getElementById('nome').value;
+            const sobrenome = document.getElementById('sobrenome').value;
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const idade = document.getElementById('idade').value;
+            const cpf = document.getElementById('cpf').value;
+            const digitoVerificador = document.getElementById('digitoVerificador').value;
+            const projetosExperiencia = document.getElementById('projetosExperiencia').value;
+
+            const dados = `
+                Nome: ${nome}
+                Sobrenome: ${sobrenome}
+                Data de Nascimento: ${dataNascimento}
+                Idade: ${idade}
+                CPF: ${cpf}${digitoVerificador}
+                Projetos e Experiência:
+                ${projetosExperiencia}
+            `;
+
+            const blob = new Blob([dados], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${cpf}${digitoVerificador}.txt`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+            alert('Cadastro realizado com sucesso!');
+            document.getElementById('cadastroForm').reset();
+        }
+    </script>
+</head>
+<body>
+    <h1>Cadastro de Currículos</h1>
+    <form id="cadastroForm" onsubmit="onSubmit(event);">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="sobrenome">Sobrenome:</label>
+        <input type="text" id="sobrenome" name="sobrenome" required>
+
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="date" id="dataNascimento" name="dataNascimento" required onchange="calcularIdade();">
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" readonly>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required maxlength="9">
+
+        <label for="digitoVerificador">Dígito Verificador:</label>
+        <input type="text" id="digitoVerificador" name="digitoVerificador" required maxlength="2">
+
+        <label for="projetosExperiencia">Projetos e Experiência:</label>
+        <textarea id="projetosExperiencia" name="projetosExperiencia" rows="4" required></textarea>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <button class="back-button" onclick="window.location.href='menu.html'">Voltar ao Menu Principal</button>
+</body>
+</html>
