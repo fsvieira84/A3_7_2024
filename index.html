@@ -5,12 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário de Login</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    function validateForm(event) {
+      event.preventDefault(); // Impede o envio do formulário
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === 'user' && password === '1234') {
+        // Redireciona para o menu.html se as credenciais forem válidas
+        window.location.href = 'menu.html';
+      } else {
+        alert('Usuário ou senha incorretos.');
+      }
+    }
+  </script>
 </head>
 <body>
 
 <div id="form-container">
   <h2>Login</h2>
-  <form action="menu.html" method="post">
+  <form onsubmit="validateForm(event)">
     <label for="username">Usuário:</label>
     <input type="text" id="username" name="username" required>
 

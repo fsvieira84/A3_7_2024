@@ -5,12 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style2.css">
     <title>Vagas de Emprego</title>
+    <style>
+        #page-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        #job-list {
+            margin-top: 20px;
+        }
+
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background-color: #e53935;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #b32100;
+        }
+
+        .job-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .job-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-title {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .job-description {
+            margin-top: 10px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>Vagas de Emprego</h1>
-    <div id="job-list"></div>
-
-    <button class="back-button" onclick="window.location.href='menu.html'">Voltar ao Menu Principal</button>
+    <header>
+        <h1>Vagas de Emprego</h1>
+    </header>
+    <div id="page-container">
+        <div id="job-list">
+            <!-- Exemplos de itens de vagas -->
+            <div class="job-item">
+                <div class="job-title">Desenvolvedor Frontend</div>
+                <div class="job-description">Responsável pelo desenvolvimento de interfaces de usuário.</div>
+            </div>
+            <div class="job-item">
+                <div class="job-title">Analista de Dados</div>
+                <div class="job-description">Coleta e análise de dados para auxiliar na tomada de decisões estratégicas.</div>
+            </div>
+            <!-- Fim dos exemplos -->
+        </div>
+        <button class="back-button" onclick="window.location.href='menu.html'">Voltar ao Menu Principal</button>
+    </div>
 
     <script src="app.js"></script>
 </body>
